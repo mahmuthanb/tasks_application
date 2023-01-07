@@ -7,7 +7,7 @@ class AppNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-      color: AppStyle.darkBlue,
+      color: AppColors.darkBlue,
       child: ListView.separated(
         padding: const EdgeInsets.symmetric(vertical: 64),
         itemCount: navigationBarItems.length,
@@ -15,7 +15,7 @@ class AppNavigationBar extends StatelessWidget {
           item: navigationBarItems[index],
         ),
         separatorBuilder: (context, index) => Divider(
-          color: AppStyle.mediumBlue,
+          color: AppColors.mediumBlue,
           height: 1,
           endIndent: 16,
           indent: 16,
@@ -40,7 +40,7 @@ class _NavigationBarListItem extends StatelessWidget {
       child: Text(
         item.name,
         style: TextStyle(
-          color: AppStyle.lightTextColor,
+          color: AppColors.lightTextColor,
           fontSize: 18,
         ),
       ),
