@@ -1,5 +1,6 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
-import 'package:task_list_app/home_page.dart';
+import 'package:task_list_app/router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,12 +11,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Task list App',
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-      home: HomePage(),
+      routeInformationParser: BeamerParser(),
+      routerDelegate: routerDelegate,
+      //home: HomePage(),
     );
   }
 }
