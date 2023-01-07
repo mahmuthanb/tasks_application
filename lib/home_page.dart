@@ -12,12 +12,21 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("data"),
+      ),
+      drawer: Drawer(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minWidth: 200, maxWidth: 300),
+          child: AppNavigationBar(),
+        ),
+      ),
       body: Row(
         children: [
-          ConstrainedBox(
-            constraints: BoxConstraints(minWidth: 200, maxWidth: 300),
-            child: AppNavigationBar(),
-          ),
+          // ConstrainedBox(
+          //   constraints: BoxConstraints(minWidth: 200, maxWidth: 300),
+          //   child: AppNavigationBar(),
+          // ),
           Expanded(
             flex: 1,
             child: TasksPage(),

@@ -15,7 +15,6 @@ final routerDelegate = BeamerDelegate(
         return BeamPage(
           key: ValueKey('home-page'),
           title: AppLocalizations.of(context).homePageTitle,
-          popToNamed: '/',
           type: BeamPageType.scaleTransition,
           child: HomePage(),
         );
@@ -35,7 +34,7 @@ final routerDelegate = BeamerDelegate(
         return BeamPage(
           key: ValueKey('task-$taskId'),
           title: 'Task #$taskId',
-          popToNamed: '/',
+          popToNamed: '/tasks',
           type: BeamPageType.scaleTransition,
           child: TaskDetail(id: int.parse(taskId), data: task),
         );
