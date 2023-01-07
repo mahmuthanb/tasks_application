@@ -1,6 +1,6 @@
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
-import 'package:task_list_app/common/app_style.dart';
+import 'package:task_list_app/common/styles/app_style.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppNavigationBar extends StatelessWidget {

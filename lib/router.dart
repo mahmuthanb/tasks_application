@@ -1,6 +1,7 @@
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:task_list_app/home_page.dart';
+import 'package:task_list_app/model/task.dart';
 import 'package:task_list_app/pages/projects/_view/projects_page.dart';
 import 'package:task_list_app/pages/tasks/_view/tasks_detail.dart';
 import 'package:task_list_app/pages/tasks/_view/tasks_page.dart';
@@ -30,12 +31,13 @@ final routerDelegate = BeamerDelegate(
       }),
       '/tasks/:taskId': (context, state, data) {
         final taskId = state.pathParameters['taskId']!;
+        final task = data as Task;
         return BeamPage(
           key: ValueKey('task-$taskId'),
           title: 'Task #$taskId',
           popToNamed: '/',
           type: BeamPageType.scaleTransition,
-          child: TaskDetail(taskId),
+          child: TaskDetail(id: int.parse(taskId), data: task),
         );
       },
       '/projects': (context, state, data) => ProjectsPage(),

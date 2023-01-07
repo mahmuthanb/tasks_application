@@ -32,4 +32,6 @@ class AppDimens {
 
 class AppTextStyle {
   static TextStyle tileHeading = TextStyle(fontWeight: FontWeight.bold);
+  static TextStyle titleHeader =
+      TextStyle(fontWeight: FontWeight.bold, fontSize: 25);
 }
