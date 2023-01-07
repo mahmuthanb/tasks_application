@@ -1,11 +1,14 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:task_list_app/common/app_style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppNavigationBar extends StatelessWidget {
   const AppNavigationBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final navigationBarItems = getNavItems(context);
     return ColoredBox(
       color: AppColors.darkBlue,
       child: ListView.separated(
@@ -34,26 +37,41 @@ class _NavigationBarListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      child: Text(
-        item.name,
-        style: TextStyle(
-          color: AppColors.lightTextColor,
-          fontSize: 18,
+    return GestureDetector(
+      onTap: () => context.beamToNamed('/${item.url}'),
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        child: Text(
+          item.name,
+          style: TextStyle(
+            color: AppColors.lightTextColor,
+            fontSize: 18,
+          ),
         ),
       ),
     );
   }
 }
 
-final navigationBarItems = [
-  // TODO: labels should be in app localization file
-  NavigationBarItem(name: 'Tasks', url: 'tasks'),
-  NavigationBarItem(name: 'Projects', url: 'projects'),
-  NavigationBarItem(name: 'Teams', url: 'teams'),
-];
+List<NavigationBarItem> getNavItems(BuildContext context) {
+  final navigationBarItems = [
+    // TODO: labels should be in app localization file
+    NavigationBarItem(
+      name: AppLocalizations.of(context).tasks,
+      url: AppLocalizations.of(context).tasks.toLowerCase(),
+    ),
+    NavigationBarItem(
+      name: AppLocalizations.of(context).projects,
+      url: AppLocalizations.of(context).projects.toLowerCase(),
+    ),
+    NavigationBarItem(
+      name: AppLocalizations.of(context).teams,
+      url: AppLocalizations.of(context).teams.toLowerCase(),
+    ),
+  ];
+  return navigationBarItems;
+}
 
 class NavigationBarItem {
   final String name;

@@ -22,7 +22,7 @@ final routerDelegate = BeamerDelegate(
       '/tasks': ((context, state, data) {
         return BeamPage(
           key: ValueKey('task-page'),
-          title: AppLocalizations.of(context).tasksTitle,
+          title: AppLocalizations.of(context).tasks,
           popToNamed: '/',
           type: BeamPageType.scaleTransition,
           child: TasksPage(),

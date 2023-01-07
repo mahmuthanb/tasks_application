@@ -1,4 +1,6 @@
 {
-    "homePageTitle" : "Home Page",
-    "tasksTitle" : "Tasks Page"
+    "homePageTitle" : "Strona Główna",
+    "projects" : "Projektowanie",
+    "teams" : "Zespoły",
+    "tasks" : "Zadanie"
 }

@@ -1,4 +1,6 @@
 {
-    "homePageTitle" : "Home Page",
-    "tasksTitle" : "Tasks Page"
+    "homePageTitle" : "Homepage",
+    "projects" : "Projects",
+    "teams" : "Teams",
+    "tasks" : "Tasks"
 }
