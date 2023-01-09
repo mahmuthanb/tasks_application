@@ -6,7 +6,6 @@ import 'package:task_list_app/pages/projects/_view/projects_page.dart';
 import 'package:task_list_app/pages/subfolder/subfolder_page.dart';
 import 'package:task_list_app/pages/listing/_view/tasks_detail.dart';
 import 'package:task_list_app/pages/teams/_view/teams_page.dart';
-// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 final mainRouterDelegate = BeamerDelegate(
   transitionDelegate: const NoAnimationTransitionDelegate(),

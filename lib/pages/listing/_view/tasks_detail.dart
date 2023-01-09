@@ -22,8 +22,9 @@ class TaskDetail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             HeaderTitle(title: data.title!),
-            SizedBox(height: AppDimens.xl),
+            SizedBox(height: AppDimens.l),
             Text(Formatter.dateTimeShort(data.dateTime!)),
+            SizedBox(height: AppDimens.s),
             Text(data.description!),
           ],
         ),

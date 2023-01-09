@@ -37,15 +37,30 @@ class _NavigationBarListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool colored = false;
+
+    if ((context.currentBeamLocation.state as BeamState)
+        .uri
+        .path
+        .contains(item.name.toLowerCase())) {
+      colored = true;
+    }
+
     return GestureDetector(
       onTap: () => context.beamToNamed('/${item.url}'),
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 16),
+        decoration: BoxDecoration(
+            color: (colored) ? Colors.orange : Colors.transparent,
+            borderRadius: (colored)
+                ? BorderRadius.all(Radius.circular(AppDimens.m))
+                : BorderRadius.zero),
+        margin: const EdgeInsets.symmetric(
+            horizontal: AppDimens.m, vertical: AppDimens.xs),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Text(
           item.name,
           style: TextStyle(
-            color: AppColors.lightTextColor,
+            color: (colored) ? AppColors.white : AppColors.lightGrey,
             fontSize: 18,
           ),
         ),

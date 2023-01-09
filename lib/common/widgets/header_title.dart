@@ -9,18 +9,16 @@ class HeaderTitle extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: AppTextStyle.titleHeader,
-          ),
-          Divider()
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: AppTextStyle.titleHeader,
+        ),
+        Divider(),
+      ],
     );
   }
 }
