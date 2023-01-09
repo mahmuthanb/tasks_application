@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:task_list_app/model/task.dart';
 
 class TaskDetail extends StatelessWidget {
@@ -12,9 +12,14 @@ class TaskDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text(
-        id.toString(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("task appbar"),
+      ),
+      body: Container(
+        child: Text(
+          id.toString(),
+        ),
       ),
     );
   }

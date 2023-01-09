@@ -3,44 +3,79 @@ import 'package:flutter/material.dart';
 import 'package:task_list_app/home_page.dart';
 import 'package:task_list_app/model/task.dart';
 import 'package:task_list_app/pages/projects/_view/projects_page.dart';
+import 'package:task_list_app/pages/subfolder/subfolder_page.dart';
 import 'package:task_list_app/pages/tasks/_view/tasks_detail.dart';
-import 'package:task_list_app/pages/tasks/_view/tasks_page.dart';
 import 'package:task_list_app/pages/teams/_view/teams_page.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+//import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-final routerDelegate = BeamerDelegate(
+final mainRouterDelegate = BeamerDelegate(
+  initialPath: '/tasks',
+  transitionDelegate: const NoAnimationTransitionDelegate(),
   locationBuilder: RoutesLocationBuilder(
     routes: {
-      '/': ((context, state, data) {
+      '/': (context, state, data) => HomePage(),
+      '/:name': (context, state, data) {
+        final name = state.pathParameters['name']!;
+
         return BeamPage(
-          key: ValueKey('home-page'),
-          title: AppLocalizations.of(context).homePageTitle,
-          type: BeamPageType.scaleTransition,
-          child: HomePage(),
-        );
-      }),
-      '/tasks': ((context, state, data) {
-        return BeamPage(
-          key: ValueKey('task-page'),
-          title: AppLocalizations.of(context).tasks,
+          key: ValueKey(name),
+          title: name,
           popToNamed: '/',
           type: BeamPageType.scaleTransition,
-          child: TasksPage(),
-        );
-      }),
-      '/tasks/:taskId': (context, state, data) {
-        final taskId = state.pathParameters['taskId']!;
-        final task = data as Task;
-        return BeamPage(
-          key: ValueKey('task-$taskId'),
-          title: 'Task #$taskId',
-          popToNamed: '/tasks',
-          type: BeamPageType.scaleTransition,
-          child: TaskDetail(id: int.parse(taskId), data: task),
+          child: SubFolderPage(name: state.pathParameters['name']!),
         );
       },
-      '/projects': (context, state, data) => ProjectsPage(),
-      '/teams': (context, state, data) => TeamsPage(),
+    },
+  ),
+);
+final routerDelegate = BeamerDelegate(
+  transitionDelegate: const NoAnimationTransitionDelegate(),
+  locationBuilder: RoutesLocationBuilder(
+    routes: {
+      '/': (context, state, data) => Scaffold(),
+      '/:name': (context, state, data) {
+        final name = state.pathParameters['name']!;
+
+        return BeamPage(
+          key: ValueKey(name),
+          title: name,
+          popToNamed: '/',
+          type: BeamPageType.scaleTransition,
+          child: SubFolderPage(name: state.pathParameters['name']!),
+        );
+      },
+    },
+  ),
+);
+
+final subRouterDelegate = BeamerDelegate(
+  locationBuilder: RoutesLocationBuilder(
+    routes: {
+      '/': (context, state, data) => Scaffold(),
+      '/:name/:id': (context, state, data) {
+        final id = state.pathParameters['id']!;
+        final name = state.pathParameters['name'];
+        return BeamPage(
+          key: ValueKey(id),
+          title: id,
+          popToNamed: '/$name',
+          type: BeamPageType.scaleTransition,
+          child: Builder(
+            builder: (context) {
+              if (name == "tasks") {
+                return TaskDetail(
+                  id: int.parse(id),
+                  data: Task(id: id, title: null, description: null, dateTime: null),
+                );
+              } else if (name == "projects") {
+                return ProjectsPage();
+              } else {
+                return TeamsPage();
+              }
+            },
+          ),
+        );
+      },
     },
   ),
 );

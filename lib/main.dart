@@ -21,8 +21,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.indigo,
       ),
       routeInformationParser: BeamerParser(),
-      routerDelegate: routerDelegate,
-      //home: HomePage(),
+      routerDelegate: mainRouterDelegate,
     );
   }
 }
