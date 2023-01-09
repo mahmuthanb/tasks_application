@@ -56,7 +56,7 @@ class _NavigationBarListItem extends StatelessWidget {
 
 List<NavigationBarItem> getNavItems(BuildContext context) {
   final navigationBarItems = [
-    // TODO: labels should be in app localization file
+    // TO DO: labels should be in app localization file
     NavigationBarItem(
       name: AppLocalizations.of(context).tasks,
       url: AppLocalizations.of(context).tasks.toLowerCase(),

@@ -1,6 +1,7 @@
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
-import 'package:task_list_app/common/widgets/menu_button.dart';
+import 'package:task_list_app/common/styles/app_style.dart';
+import 'package:task_list_app/pages/listing/_view/listing_page.dart';
 import 'package:task_list_app/router.dart';
 
 class SubFolderPage extends StatefulWidget {
@@ -16,31 +17,22 @@ class _SubFolderPageState extends State<SubFolderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('subfolder appbar'),
-      ),
       body: Row(
         children: [
-          Container(
-            color: Colors.blue[300],
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                MenuButton(
-                  beamer: _beamerKey,
-                  uri: '/${widget.name}/1',
-                  child: Text('1'),
-                ),
-                SizedBox(height: 16.0),
-                MenuButton(
-                  beamer: _beamerKey,
-                  uri: '/${widget.name}/2',
-                  child: Text('2'),
-                ),
-              ],
+          Expanded(
+            child: ListingPage(
+              widget.name,
+              (p0) {
+                _beamerKey.currentState?.routerDelegate
+                    .beamToNamed('/${widget.name}/$p0');
+              },
             ),
           ),
-          Container(width: 1, color: Colors.blue),
+          VerticalDivider(
+            color: AppColors.scaffoldColor,
+            width: AppDimens.xxs,
+            thickness: AppDimens.xxs,
+          ),
           Expanded(
             child: ClipRRect(
               child: Beamer(key: _beamerKey, routerDelegate: subRouterDelegate),

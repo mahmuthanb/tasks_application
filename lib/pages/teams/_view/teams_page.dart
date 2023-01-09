@@ -7,7 +7,7 @@ class TeamsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      // TODO: labels should be in app localization file
+      // TO DO: labels should be in app localization file
       child: Text(AppLocalizations.of(context).teams),
     );
   }

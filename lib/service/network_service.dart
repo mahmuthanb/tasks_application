@@ -1,11 +1,7 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter/material.dart';
 import 'package:task_list_app/model/task.dart';
 
-final networkServiceProvider = Provider<NetworkService>((ref) {
-  return NetworkService();
-});
-
-class NetworkService {
+class NetworkService extends ChangeNotifier {
   NetworkService();
 
   Future<List<Task>> getTasks() async {
